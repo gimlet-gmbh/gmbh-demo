@@ -1,0 +1,7 @@
+name: demo
+aliases: ["d"]
+language: go
+makefile: true
+pathtobin: ./bin/_cabal-a
+isClient: true
+isServer: true
