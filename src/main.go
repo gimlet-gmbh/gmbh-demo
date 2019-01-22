@@ -5,8 +5,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/abedick/gmbh"
 	jwt "github.com/dgrijalva/jwt-go"
+	"github.com/gimlet-gmbh/gmbh"
 )
 
 func main() {
