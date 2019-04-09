@@ -1,1 +1,1 @@
-# gmbh-demo
+gmbh-demo

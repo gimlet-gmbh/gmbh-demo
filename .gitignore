@@ -1,1 +1,3 @@
-bin/*
+services/node_service/node_modules
+
+gmbh/

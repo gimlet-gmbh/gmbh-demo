@@ -1,0 +1,82 @@
+##################################################################################
+## gmbH Project
+##################################################################################
+
+max_services_per_node = 2
+include_dashboard = true
+
+##################################################################################
+[core]
+##################################################################################
+# 
+mode = "local"
+#
+# Print coreData to stdout and stdErr? This can be overriden with the --verbose 
+# command line flag
+verbose = true
+#
+# For instances where gmbh is running in a container
+daemom = false
+#
+# The address to start the coreData server
+address = "localhost:49500" #default is localhost:49500
+#
+# How long between keep alive messages
+keep_alive = "55s"
+#
+# Path to gmbhCore binary
+core_bin = ""   # default is $GOPATH/bin/gmbhCore
+                # Note cannot interpolate env vars in TOML
+
+##################################################################################
+[procm]
+##################################################################################
+# What address should the ProcM be started at
+address = "localhost:5900" #default is localhost:59500
+#
+# How long between keep alive messages
+keep_alive = "45s"
+#
+# Print gmbhProcM to stdout and stdErr
+verbose = false
+#
+# Path to gmbhProcm binary
+procm_bin = ""  # default is $GOPATH/bin/gmbhProcm
+                # Note cannot interpolate env vars in TOML
+
+
+##################################################################################
+# Services # Holds the array of services to launch from the service launcher and
+############ start in managed mode.
+##################################################################################
+
+    [[service]]
+        id = "gos"
+        args = [""]
+        env = [""]
+        language = "go"
+        bin_path = "./services/go_service/go_service"
+        src_path = "./services/go_service"
+        has_makefile = true
+        ports = [""]
+
+    [[service]]
+        id = "node_service"
+        args = [""]
+        env = [""]
+        language = "node"
+        src_path = "./services/node_service/"
+        has_makefile = false
+        ports = [""]
+        interpreter = "node"
+        entry_point = "./services/node_service/main.js"
+
+    [[service]]
+        id = "ws"
+        args = [""]
+        env = [""]
+        language = "go"
+        bin_path = "./services/webserver/webserver"
+        src_path = "./services/webserver"
+        has_makefile = true
+        ports = ["2121"]
